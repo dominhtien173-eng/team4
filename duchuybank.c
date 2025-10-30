@@ -2,124 +2,120 @@
 #include <stdlib.h>
 
 int main() {
-	float balance = 5000000;   // Sa; dF0 ban Da:'u 5 tria;u
-	float debt = 0;            // DF0 na;# ban Da:'u
+	float balance = 5000000;   
+	float debt = 0;            
 	int choice;
 	float amount;
 
 	do {
 		printf("\n DUC HUY BANK \n");
-		printf("1. Xem sa; dF0\n");
-		printf("2. Na:!p tia;n\n");
-		printf("3. RC:t tia;n\n");
-		printf("4. Chuya;n tia;n\n");
-		printf("5. Vay na;#\n");
-		printf("6. Xem dF0 na;#\n");
-		printf("7. Tra:# na;# (tra;+ vC o tC i khoa:#n hoa:7c na:!p tia;n Da; tra:#)\n");
-		printf("8. ThoC!t\n");
-		printf("Cha;
-       n cha;)c nDng: ");
+		printf("1. Xem so du\n");
+		printf("2. Nap tien\n");
+		printf("3. Rut tien\n");
+		printf("4. Chuyen tien\n");
+		printf("5. Vay no\n");
+		printf("6. Xem du no\n");
+		printf("7. Tra no (tru vao tai khoan hoac nap tien de tra)\n");
+		printf("8. Thoat\n");
+		printf("Chon chuc nang: ");
 		scanf("%d", &choice);
 
 		switch (choice) {
 		case 1:
-			printf("\nSa; dF0 hia;n ta:!i: %.0f VND\n", balance);
+			printf("\nSo du hien tai: %.0f VND\n", balance);
 			break;
 
 		case 2:
-			printf("\nNha:-p sa; tia;n mua;n na:!p: ");
+			printf("\nNhap so tien muon nap: ");
 			scanf("%f", &amount);
 			balance += amount;
-			printf("DC# na:!p thC nh cC4ng. Sa; dF0 ma;i: %.0f VND\n", balance);
+			printf("Da nap thanh cong. So du moi: %.0f VND\n", balance);
 			break;
 
 		case 3:
-			printf("\nNha:-p sa; tia;n mua;n rC:t: ");
+			printf("\nNhap so tien muon rut: ");
 			scanf("%f", &amount);
 			if (amount > balance)
-				printf("KhC4ng Da;' tia;n Da; rC:t!\n");
+				printf("Khong du tien de rut!\n");
 			else {
 				balance -= amount;
-				printf("RC:t thC nh cC4ng. Sa; dF0 ma;i: %.0f VND\n", balance);
+				printf("Rut thanh cong. So du moi: %.0f VND\n", balance);
 			}
 			break;
 
 		case 4:
-			printf("\nNha:-p sa; tia;n mua;n chuya;n: ");
+			printf("\nNhap so tien muon chuyen: ");
 			scanf("%f", &amount);
 			if (amount > balance)
-				printf("KhC4ng Da;' tia;n Da; chuya;n!\n");
+				printf("Khong du tien de chuyen!\n");
 			else {
 				balance -= amount;
-				printf("DC# chuya;n %.0f VND thC nh cC4ng.\n", amount);
-				printf("Sa; dF0 cC2n la:!i: %.0f VND\n", balance);
+				printf("Da chuyen %.0f VND thanh cong.\n", amount);
+				printf("So du con lai: %.0f VND\n", balance);
 			}
 			break;
 
 		case 5:
-			printf("\nNha:-p sa; tia;n mua;n vay: ");
+			printf("\nNhap so tien muon vay: ");
 			scanf("%f", &amount);
 			balance += amount;
 			debt += amount;
-			printf("DC# vay %.0f VND thC nh cC4ng.\n", amount);
-			printf("Sa; dF0 hia;n ta:!i: %.0f VND | DF0 na;#: %.0f VND\n", balance, debt);
+			printf("Da vay %.0f VND thanh cong.\n", amount);
+			printf("So du hien tai: %.0f VND | Du no: %.0f VND\n", balance, debt);
 			break;
 
 		case 6:
-			printf("\nDF0 na;# hia;n ta:!i: %.0f VND\n", debt);
+			printf("\nDu no hien tai: %.0f VND\n", debt);
 			break;
 
 		case 7:
 			if (debt == 0) {
-				printf("\nBa:!n khC4ng cC3 dF0 na;#.\n");
+				printf("\nBan khong co du no.\n");
 				break;
 			}
-			printf("\nSa; dF0 hia;n ta:!i: %.0f VND | DF0 na;#: %.0f VND\n", balance, debt);
+			printf("\nSo du hien tai: %.0f VND | Du no: %.0f VND\n", balance, debt);
 
 			if (balance >= debt) {
 				balance -= debt;
-				printf("DC# tra:# ha:?t na;# %.0f VND ba:1ng tia;n trong tC i khoa:#n.\n", debt);
+				printf("Da tra het no %.0f VND bang tien trong tai khoan.\n", debt);
 				debt = 0;
 			} else {
-				printf("Sa; dF0 khC4ng Da;' Da; tra:# ha:?t na;#.\n");
-				printf("Ba:!n mua;n na:!p thC*m tia;n Da; tra:# na;#? (1: CC3, 0: KhC4ng): ");
+				printf("So du khong du de tra het no.\n");
+				printf("Ban muon nap them tien de tra no? (1: Co, 0: Khong): ");
 				int depositMore;
 				scanf("%d", &depositMore);
 
 				if (depositMore == 1) {
-					printf("Nha:-p sa; tia;n mua;n na:!p: ");
+					printf("Nhap so tien muon nap: ");
 					scanf("%f", &amount);
 					balance += amount;
 					if (balance >= debt) {
 						balance -= debt;
-						printf("DC# tra:# ha:?t na;# %.0f VND sau khi na:!p thC*m.\n", debt);
+						printf("Da tra het no %.0f VND sau khi nap them.\n", debt);
 						debt = 0;
 					} else {
 						debt -= balance;
-						printf("Cha;	 tra:# DF0a;#c %.0f VND, cC2n na;# %.0f VND.\n", balance, debt);
+						printf("Chi tra duoc %.0f VND, con no %.0f VND.\n", balance, debt);
 						balance = 0;
 					}
 				} else {
-					printf("Ba:!n DC# cha;
-					       n khC4ng na:!p thC*m. ChF0a tra:# na; #.\n");
+					printf("Ban da chon khong nap them. Chua tra no.\n");
 				}
 			}
-			printf("Sa; dF0 hia;n ta:!i: %.0f VND | DF0 na;# cC2n la:!i: %.0f VND\n", balance, debt);
+			printf("So du hien tai: %.0f VND | Du no con lai: %.0f VND\n", balance, debt);
 			break;
 
 		case 8:
-			printf("\nDang thoC!t chF0F!ng trC,nh...\n");
+			printf("\nDang thoat chuong trinh...\n");
 			break;
 
 		default:
-			printf("\nLa;1a cha;
-			       n khC4ng ha; #p la; . Vui lC2ng cha;
-			       n ta; + 1-8.\n");
+			printf("\nLua chon khong hop le. Vui long chon tu 1-8.\n");
 		}
 
 	} while (choice != 8);
 
-	printf("Ca:#m F!n ba:!n DC# sa;- da;%ng chF0F!ng trC,nh!\n");
-	printf("Na:?u cC3 va:%n Da; tra;%c tra:7c ka;9 thua:-t hC#y liC*n ha; giC!m Da;c Da;)c Huy.\n");
+	printf("Cam on ban da su dung chuong trinh!\n");
+	printf("Neu co van de truc trac ky thuat hay lien he giam doc Duc Huy.\n");
 	return 0;
 }
