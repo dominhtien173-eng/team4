@@ -73,7 +73,7 @@ int main() {
                             if (needed_practice_final <= 0)
                                 printf("You already passed even without practice final!\n");
                             else if (needed_practice_final > 100)
-                                printf("Even 100 points in practice final can’t help!\n");
+                                printf("Even 100 points in practice final canâ€™t help!\n");
                             else
                                 printf("You need %.2f points in practice final to pass.\n", needed_practice_final);
                             break;
@@ -127,4 +127,5 @@ int main() {
 
     return 0;
 }
+
 
